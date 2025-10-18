@@ -6,11 +6,9 @@ The original goal for both projects is simply to have an easy way to start / sto
 
 ## Features
 
-- **Remote Process Control**: Start and stop the NHL LED Scoreboard LED  with a simple toggle switch
+- **Remote Process Control**: Start and stop the NHL LED Scoreboard process with a simple toggle switch
 - **Real-time Status Monitoring**: Automatically polls server status every second
 - **Secure Authentication**: Uses Bearer token authentication for all REST API requests
-- **Easy Configuration**: Simple setup screen for server URL and password
-- **Settings Management**: Edit server configuration anytime via the gear icon
 
 ## Setup
 
@@ -33,7 +31,6 @@ Tap the gear icon in the top-right corner to modify the server URL or password a
 
 The main screen displays:
 
-- **App Icon**: Your LED NHL Killswitch logo
 - **Status Text**: Real-time status message from the server
 - **Process Toggle**: Switch to start/stop the LED display process
   - ON: Process is running
