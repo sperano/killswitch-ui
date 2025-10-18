@@ -76,4 +76,4 @@ Built with:
 
 ## License
 
-Created by Éric Spérano on 10/17/25.
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
