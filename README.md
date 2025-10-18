@@ -1,12 +1,14 @@
 # LED NHL Killswitch
 
-An iOS app to remotely control and monitor an NHL LED display process via HTTP API.
+An iOS app to communicate with this [killswitch](https://github.com/sperano/killswitch/) process running on a server.
+
+The original goal for both projects is simply to have an easy way to start / stop the [NHL LED Scoreboard](https://github.com/falkyre/nhl-led-scoreboard) project from an iPhone.
 
 ## Features
 
-- **Remote Process Control**: Start and stop the LED display process with a simple toggle switch
+- **Remote Process Control**: Start and stop the NHL LED Scoreboard LED  with a simple toggle switch
 - **Real-time Status Monitoring**: Automatically polls server status every second
-- **Secure Authentication**: Uses Bearer token authentication for all API requests
+- **Secure Authentication**: Uses Bearer token authentication for all REST API requests
 - **Easy Configuration**: Simple setup screen for server URL and password
 - **Settings Management**: Edit server configuration anytime via the gear icon
 
@@ -16,8 +18,8 @@ An iOS app to remotely control and monitor an NHL LED display process via HTTP A
 
 When you first launch the app, you'll be prompted to enter:
 
-1. **Server URL**: The base URL of your LED NHL server (e.g., `http://192.168.1.100:8080`)
-2. **Password**: The Bearer token used for authentication
+1. **Server URL**: The base URL of your LED NHL server (e.g., `http://192.168.1.100:9966`)
+2. **Password**: The Bearer token/password used for authentication
 
 These settings are saved locally and persist across app restarts.
 
@@ -58,28 +60,7 @@ All requests include the `Authorization: Bearer <password>` header.
 
 ## Server Requirements
 
-Your LED NHL server must implement the following HTTP endpoints:
-
-### GET /status
-Returns the current process status as plain text.
-
-**Example responses:**
-```
-Process is running with PID 1234
-```
-```
-Process is not running
-```
-
-### POST /start
-Starts the LED display process.
-
-**Authentication**: Requires `Authorization: Bearer <token>` header
-
-### POST /stop
-Stops the LED display process.
-
-**Authentication**: Requires `Authorization: Bearer <token>` header
+See [killswitch](https://github.com/sperano/killswitch).
 
 ## Technical Details
 
@@ -88,28 +69,6 @@ Stops the LED display process.
 - **Storage**: AppStorage for persistent configuration
 - **Networking**: URLSession for HTTP requests
 - **Polling Interval**: 1 second
-
-## Logging
-
-The app logs all HTTP requests and responses to stdout for debugging:
-
-- 🌐 HTTP GET/POST requests with full URLs
-- 🔑 Authorization headers (for debugging)
-- ✅ Successful responses
-- ❌ Error messages
-
-View logs in Xcode's console when running the app.
-
-## Error Handling
-
-The app gracefully handles:
-
-- Invalid server URLs
-- Network connectivity issues
-- Server errors
-- Missing or invalid responses
-
-All errors are displayed in the status text for user feedback.
 
 ## Development
 
