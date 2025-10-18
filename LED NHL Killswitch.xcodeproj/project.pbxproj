@@ -260,7 +260,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "LED-NHL-Killswitch-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "LED NHL";
+				INFOPLIST_KEY_CFBundleDisplayName = "LED NHL Scoreboard";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -297,7 +297,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "LED-NHL-Killswitch-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "LED NHL";
+				INFOPLIST_KEY_CFBundleDisplayName = "LED NHL Scoreboard";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -161,8 +161,7 @@ struct MainView: View {
 
     private func fetchStatus() {
         guard let url = URL(string: serverURL + "/status") else {
-            statusText = "Invalid URL"
-            print("❌ Invalid URL: \(serverURL)/status")
+            statusText = "Invalid URL: \(serverURL)/status"
             return
         }
 
@@ -170,26 +169,19 @@ struct MainView: View {
         request.httpMethod = "GET"
         request.setValue("Bearer \(serverPassword)", forHTTPHeaderField: "Authorization")
 
-        print("🌐 HTTP GET: \(url.absoluteString)")
-        print("🔑 Authorization: Bearer \(serverPassword)")
-
         URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
                 if let error = error {
                     statusText = "Error: \(error.localizedDescription)"
                     isProcessRunning = false
-                    print("❌ HTTP Error: \(error.localizedDescription)")
                     return
                 }
 
                 guard let data = data, let text = String(data: data, encoding: .utf8) else {
-                    statusText = "No data received"
+                    statusText = "No data received from \(url.absoluteString)"
                     isProcessRunning = false
-                    print("❌ No data received from \(url.absoluteString)")
                     return
                 }
-
-                print("✅ HTTP Response: \(text)")
                 statusText = text
                 isProcessRunning = text.hasPrefix("Process is running with PID")
             }
@@ -199,8 +191,7 @@ struct MainView: View {
     private func sendCommand(start: Bool) {
         let endpoint = start ? "/start" : "/stop"
         guard let url = URL(string: serverURL + endpoint) else {
-            statusText = "Invalid URL"
-            print("❌ Invalid URL: \(serverURL)\(endpoint)")
+            statusText = "Invalid URL: \(serverURL)\(endpoint)"
             return
         }
 
@@ -208,22 +199,12 @@ struct MainView: View {
         request.httpMethod = "POST"
         request.setValue("Bearer \(serverPassword)", forHTTPHeaderField: "Authorization")
 
-        print("🌐 HTTP POST: \(url.absoluteString)")
-        print("🔑 Authorization: Bearer \(serverPassword)")
-
         URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
                 if let error = error {
                     statusText = "Command Error: \(error.localizedDescription)"
-                    print("❌ HTTP POST Error: \(error.localizedDescription)")
                     return
                 }
-
-                if let data = data, let text = String(data: data, encoding: .utf8) {
-                    print("✅ HTTP POST Response: \(text)")
-                }
-
-                // Immediately fetch status after command
                 fetchStatus()
             }
         }.resume()
